@@ -1,0 +1,15 @@
+name: Druapl Custom Theme with Gulp
+type: theme
+version: 1.x
+description: 'A custom theme for Druapl with Gulp'
+core_version_requirement: '>=9.2'
+base theme: stable9
+libraries:
+  - druapl_theme_gulp/global-styling
+regions:
+  header: Header
+  highlighted: Highlighted
+  content: Content
+  footer_top: Footer Top
+  footer_bottom: Footer Bottom
+  disable: Disable

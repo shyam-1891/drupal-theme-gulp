@@ -1,0 +1,17 @@
+.layout-container.front__page {
+  .landdingpage_banner {
+    display: none;
+    h1 {
+      display: none;
+    }
+  }
+}
+
+body.user-logged-in {
+  .layout-container.front__page {
+    .banner_image.landdingpage_banner {
+      min-height: 115px;
+      display: block;
+    }
+  }
+}

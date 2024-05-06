@@ -1,0 +1,13 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      build/css/global.css: {}
+      build/css/header.css: {}
+      build/css/footer.css: {}
+  js:
+    build/js/global.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once

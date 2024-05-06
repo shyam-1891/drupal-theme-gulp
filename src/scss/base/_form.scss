@@ -1,0 +1,49 @@
+form.user-login-form, form.user-pass {
+  max-width: 550px;
+  width: 100%;
+  margin: 60px auto;
+  padding: 0 15px;
+  .js-form-item {
+    margin: 0 0 15px;
+    display: block;
+    label {
+      display: block;
+      margin: 0 0 5px;
+    }
+
+    input[type=text], input[type=password], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  }
+
+  .button {
+    background-color: #007ea7;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 12px 50px;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    margin: 20px 0;
+    transition: all 300ms ease;
+    text-align: center;
+    text-transform: uppercase;
+    box-shadow: none;
+    border: none;
+    &:hover,
+    &:focus {
+      background-color: #00a4da;
+      color: #fff;
+    }
+    @media only screen and (max-width: 767px) {
+      font-size: 13px;
+      line-height: 18px;
+    }
+  }
+}

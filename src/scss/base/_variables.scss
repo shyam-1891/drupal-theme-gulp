@@ -1,0 +1,31 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
+@font-face {
+  font-family: "MuseoSans-Regular";
+  src: url("../../fonts/MuseoSans/MuseoSans_500.ttf");
+}
+@font-face {
+  font-family: "MuseoSans";
+  src: url("../../fonts/MuseoSans/MuseoSans_700.ttf");
+}
+@font-face {
+  font-family: "MuseoSans-Bold";
+  src: url("../../fonts/MuseoSans/MuseoSans_900.ttf");
+}
+
+// Variables
+$Poppins: "Poppins", sans-serif;
+$MuseoSansRegular: "MuseoSans-Regular", sans-serif;
+$MuseoSansBold: "MuseoSans", sans-serif;
+$MuseoSans900Bold: "MuseoSans-Bold", sans-serif;
+
+// Colors
+$black: #000000;
+$white: #ffffff;
+$primary: #666;
+$secondary: #007ea7;
+$btnHover: #00a4da;
+$gray: #00a4da;
+$darkgray: #333333;
+$linkHover: #23527c;
+$bodycolor: #292929;

@@ -1,0 +1,21 @@
+@import "./base/variables";
+
+.column-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.column-left,
+.column-right {
+  p {
+    margin-bottom: 5px;
+  }
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 767px) {
+  .column-container {
+    grid-template-columns: 1fr;
+  }
+}

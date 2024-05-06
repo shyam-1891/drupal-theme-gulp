@@ -1,0 +1,34 @@
+<?php
+
+use Drupal\core\Url;
+use Drupal\Core\Link;
+use Drupal\node\Entity\Node;
+use Drupal\views\Views;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\Core\Menu\MenuLinkInterface;
+use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
+use Drupal\block\Entity\Block;
+use \Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function druapl_theme_gulp_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__' . $content_type;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Add views unformatted template suggestions.
+ * 
+ * @inheritdoc
+ */
+function druapl_theme_gulp_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'views_view_unformatted__' . $variables['view']->id();
+}

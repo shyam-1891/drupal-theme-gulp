@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{%
+  set classes = [
+    'paragraph',
+	  'text_image_component_wrapper',
+    'component__wrapper',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    content.field_ti_background_color.0['#markup'] == '1' ? 'grey_bg' : '',
+    content.field_ti_layout_width.0['#markup'] == '70_30' ? 'layout_two' : '',
+  ]
+%}
+{% block paragraph %}
+<div{{attributes.addClass(classes)}}>
+	{% block content %}
+    <div class="container">
+      <div class="text_image_wrapper">
+        <div class="left_content_wrapper">
+          <h2>{{ content.field_ti_title.0|raw }}</h2>
+          <div class="text_content">{{ content.field_ti_description.0|raw }}</div>
+          {% if content.field_ti_cta.0 %}
+            <div class="cta cta_btn cta_btn_2">
+            {% if content.field_ti_cta.0['#url'].external %}
+              <a class="cta_btn_link_regular" href="{{ content.field_ti_cta.0['#url'].uri }}" target="_blank" title="Opens in a new window">{{ content.field_ti_cta.0['#title'] }}</a>
+            {% else %}
+              <a class="cta_btn_link_regular" href="{{ path(content.field_ti_cta.0['#url'].routeName, content.field_ti_cta.0['#url'].routeParameters) }}">{{ content.field_ti_cta.0['#title'] }}</a>
+            {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="right_content_wrapper">
+          <div class="image_content">{{ content.field_ti_image.0|raw }}</div>
+          {% if content.field_ti_image_caption %}
+            <div class="text_image_caption">{{ content.field_ti_image_caption.0|raw }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+	{% endblock %}
+  </div>
+{% endblock paragraph %}

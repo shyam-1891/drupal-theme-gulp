@@ -1,0 +1,199 @@
+@import "./base/variables";
+
+.landing_page__wrapper {
+  position: relative;
+
+  .banner_image {
+    min-height: 420px;
+    max-height: 420px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+    margin: 0 0 40px;
+    &.no_banner {
+      background-image: url('../../social_icons/images/nobanner-image.jpg');
+      &::after {
+        display: none;
+      }
+    }
+    &::after {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      content: "";
+      background-color: rgba($color: $black, $alpha: 0.4);
+      z-index: 2;
+    }
+
+    .banner_image__container {
+      min-height: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner_content {
+      position: absolute;
+      bottom: 0;
+      left: 15px;
+      z-index: 3;
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      width: calc(100% - 30px);
+    }
+
+    h1 {
+      position: relative;
+      font-size: 18px;
+      min-width: 200px;
+      color: $white;
+      font-weight: 600;
+      text-transform: uppercase;
+      float: left;
+      padding: 20.5px 30px;
+      background: $secondary;
+      margin: 0;
+      text-align: center;
+    }
+
+    .breadcrumb {
+      margin-left: auto;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 19px 50px;
+      text-align: center;
+
+      .breadcrumb__list {
+        display: block;
+        margin: 0;
+        padding: 0;
+        li {
+          display: inline-block;
+          position: relative;
+          font-size: 13px;
+          font-family: inherit;
+          font-weight: 800;
+          color: $secondary;
+          text-transform: uppercase;
+          &::after {
+            position: relative;
+            content: ">>";
+            font-size: 12px;
+            font-weight: 400;
+            font-family: "Poppins", sans-serif;
+            color: $white;
+            right: 1px;
+            top: 0px;
+            margin: 0 2px;
+          }
+          &:last-child {
+            &:after {
+              display: none;
+            }
+          }
+          &:first-child {
+            a {
+              margin-right: 0px;
+            }
+          }
+          a {
+            display: inline-block;
+            font-size: 13px;
+            font-family: inherit;
+            font-weight: 800;
+            color: $white;
+            text-decoration: none;
+            text-transform: uppercase;
+            &:hover, &:focus {
+              color: $secondary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.views-element-container {
+  float: left;
+  width: 100%;
+  margin-bottom: 40px;
+  
+}
+
+.archived-agenda-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .views-row {
+    float: left;
+    width: 50%;
+    text-align: center;
+    margin: 20px 0;
+    flex: 0 0 50%;
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+      flex: 0 0 100%;
+    }
+    a {
+      font-weight: 700;
+      &:hover , &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+body.page-node-type-agenda {
+  .agenda_content_wrapper {
+    table {
+      tr {
+        td {
+          &:first-child {
+            text-align: right;
+            width: 100px;
+            @media only screen and (max-width: 767px) {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sponsor_page_wrapper {
+  text-align: center;
+  margin: 40px 0;
+  a {
+    display: inline-block;
+    margin-bottom: 20px;
+    pointer-events: none;
+  }
+  .contextual-links {
+    a {
+      pointer-events: unset;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .landing_page__wrapper {
+    .banner_image {
+      min-height: 480px;
+      max-height: 480px;
+      .banner_content {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      h1, .breadcrumb {
+        flex: 0 0 100%;
+        margin: 0;
+      }
+    }
+  }
+}
