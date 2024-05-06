@@ -1,4 +1,4 @@
-# Boston Iinvestment Conference - Custom Theme
+# Drupal with Gulp - Custom Theme
 
 ## Installation
 
